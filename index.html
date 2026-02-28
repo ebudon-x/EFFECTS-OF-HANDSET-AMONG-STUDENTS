@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RESEARCH ON EFFECTS OF HANDSET USAGE AMONG STUDENTS</title>    
+    <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+    <!-- <img src="./image/EltonCris_form_files_keyboard-498396_12801.png" alt=""> -->
+    <div class="topbar">
+        <a href="./index.html">HOME</a>
+        <a href="./admin-login.html">ADMIN</a>
+    </div>
+    <div class="body">
+        <div class="container">
+            <div class="hh">
+                <h2>STUDENT RESEARCH FORM</h2>
+                <span>RESEARCH QUESTIONNAIRE ON THE EFFECTS OF HANDSET USAGE AMONG STUDENTS</span>
+            </div>
+            <form id="researchForm">
+                <div class="nn">
+                    <label>Student Matric No</label>
+                    <input type="text" id="studentID" required>                
+                </div>
+                <div class="nn">
+                    <label>Level of study</label>
+                        <select id="level" required>
+                            <option value="">Select Level</option>
+                            <option>100</option>
+                            <option>200</option>
+                            <option>300</option>
+                            <option>400</option>
+                        </select>                
+                </div>
+                <div class="nn">
+                    <label>Department</label>
+                    <input type="text" id="department" required>                
+                </div>
+                <div class="nnn">
+                    <label>Gender</label>
+                    <div class="bb">
+                        <div class="bbb">
+                            <input type="radio" name="gender" id="male">
+                            <label for="male">Male</label> 
+                        </div>
+                        <div class="bbb">
+                            <input type="radio" name="gender" id="female">
+                            <label for="female">female</label> 
+                        </div>
+
+                    </div>
+                </div>
+                <div class="nn">
+                    <label>Phone Number</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="nn">
+                    <label>I use my handset to record lectures or take photos of notes on the whiteboard</label>
+                        <select id="q2" required>
+                            <option value="">Select Level</option>
+                            <option>Yes</option>
+                            <option>NO</option>
+                        </select>  
+                </div>
+                <div class="nn">
+                    <label>Having my handset nearby during study hours reduces my concentration</label>
+                    <select id="q3">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </div>
+                <div class="nn">
+                    <label>I have used AI tools (like ChatGPT) or Google on my handset to help solve difficult assignments</label>
+                    <select id="q4">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select> 
+                </div>
+                <div class="nn">
+                    <label>I feel that my handset has improved my communication with my lectures and study groups</label>
+                    <select id="q5">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select> 
+                </div>
+                <div class="nn">
+                    <label>I stay up late at night using my handset, which makes me go late for my morning lectures</label>
+                    <select id="q6">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select> 
+                </div>
+                <div class="nn">
+                    <label>Do you take your handset into the examination hall (even when switched off)?</label>
+                    <select id="q7">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select> 
+                </div>
+                <div class="nn">
+                    <label>Can you spend an entire school day without checking your handset?</label>
+                    <select id="q8">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select> 
+                </div>
+                <div class="nn">
+                    <label>Give a short explain on the advantages and disadvantages for using handset as a Student you are</label>
+                    <textarea id="q9"></textarea>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="clean-btn" onclick="clearForm()">Clean</button>
+                    <button type="submit" class="submit-btn">Submit</button>
+                </div>    
+            </form>
+            <div class="success" id="successMsg">
+                ✔ Submission Successful!
+            </div>
+        </div>
+    </div>
+
+<script type="module" src="./main.js"></script>
+</body>
+</html>
