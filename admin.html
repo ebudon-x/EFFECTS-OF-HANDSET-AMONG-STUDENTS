@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard</title>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getFirestore, collection, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCgiAUj5673_rqvbLRIvvk9dTb5pZBcbdw",
+    authDomain: "effects-of-handset.firebaseapp.com",
+    projectId: "effects-of-handset",
+    storageBucket: "effects-of-handset.firebasestorage.app",
+    messagingSenderId: "248166796655",
+    appId: "1:248166796655:web:4159b576fa03d4262c6c9a"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const auth = getAuth(app);
+
+  const notesContainer = document.getElementById("notes");
+  const analyticsDiv = document.getElementById("analytics");
+  const totalSpan = document.getElementById("total");
+  const searchInput = document.getElementById("search");
+
+  let allData = [];
+
+  // Redirect if not logged in
+  onAuthStateChanged(auth, user => {
+    if (!user) window.location = "admin-login.html";
+  });
+
+  // Listen for real-time submissions
+  const q = query(collection(db, "notes"), orderBy("created", "desc"));
+  onSnapshot(q, snapshot => {
+    allData = [];
+    snapshot.forEach(doc => allData.push(doc.data()));
+    render(allData);
+    renderAnalytics(allData);
+  });
+
+  function render(data) {
+    totalSpan.innerText = data.length;
+    let out = "";
+    data.forEach(d => {
+      out += `<div class="card">
+        <strong>${d.studentID}</strong><br>
+        Level: ${d.level} | Gender: ${d.gender}<br>
+        Dept: ${d.department} | Phone: ${d.phone}
+        <hr>
+        <strong>Q2:</strong> ${d.q2}<br>
+        <strong>Q3:</strong> ${d.q3}<br>
+        <strong>Q4:</strong> ${d.q4}<br>
+        <strong>Q5:</strong> ${d.q5}
+      </div>`;
+    });
+    notesContainer.innerHTML = out;
+  }
+
+  searchInput.addEventListener("input", function() {
+    const val = this.value.toLowerCase();
+    render(allData.filter(d =>
+      d.studentID.toLowerCase().includes(val) ||
+      d.department.toLowerCase().includes(val)
+    ));
+  });
+
+  function renderAnalytics(data) {
+    let male = 0, female = 0;
+    let levels = {};
+    data.forEach(d => {
+      if(d.gender === "Male") male++;
+      if(d.gender === "Female") female++;
+      levels[d.level] = (levels[d.level] || 0) + 1;
+    });
+    let lvlStr = "";
+    for (let l in levels) lvlStr += `${l}: ${levels[l]}<br>`;
+    analyticsDiv.innerHTML = `<strong>Male:</strong> ${male}<br>
+      <strong>Female:</strong> ${female}<br><br>
+      <strong>Level Distribution</strong><br>${lvlStr}`;
+  }
+
+  window.exportCSV = function() {
+    let csv = "StudentID,Level,Department,Gender,Phone,Q2,Q3,Q4,Q5\n";
+    allData.forEach(d => {
+      csv += `${d.studentID},${d.level},${d.department},${d.gender},${d.phone},${d.q2},${d.q3},${d.q4},${d.q5}\n`;
+    });
+    const blob = new Blob([csv], {type:"text/csv"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "submissions.csv";
+    a.click();
+  };
+
+  window.logout = function() {
+    signOut(auth).then(() => { window.location = "admin-login.html"; });
+  };
+</script>
+<style>
+  body{
+    font-family:Arial;
+    background:#f4f4f4;
+    padding:20px;
+}
+  .top{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+}
+  .card, .analytics{
+    background:white;
+    padding:15px;
+    margin-top:15px;
+    border-radius:8px;
+}
+  #search{
+    width:100%;
+    padding:8px;
+    margin-top:10px;
+}
+</style>
+</head>
+<body>
+    <div class="top">
+        <h2>Admin Dashboard</h2>
+        <div>
+            <button onclick="exportCSV()">Export CSV</button>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+    <input type="text" id="search" placeholder="Search...">
+    <h3>Total Submissions: <span id="total">0</span></h3>
+    <div class="analytics" id="analytics"></div>
+    <div id="notes"></div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RESEARCH ON EFFECTS OF HANDSET USAGE AMONG STUDENTS</title>    
+    <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+    <!-- <img src="./image/EltonCris_form_files_keyboard-498396_12801.png" alt=""> -->
+    <div class="topbar">
+        <a href="./index.html">HOME</a>
+        <a href="./admin-login.html">ADMIN</a>
+    </div>
+    <div class="body">
+        <div class="container">
+            <div class="hh">
+                <h2>STUDENT RESEARCH FORM</h2>
+                <span>RESEARCH QUESTIONNAIRE ON THE EFFECTS OF HANDSET USAGE AMONG STUDENTS</span>
+            </div>
+            <form id="researchForm">
+                <div class="nn">
+                    <label>Student Matric No</label>
+                    <input type="text" id="studentID" required>                
+                </div>
+                <div class="nn">
+                    <label>Level of study</label>
+                        <select id="level" required>
+                            <option value="">Select Level</option>
+                            <option>100</option>
+                            <option>200</option>
+                            <option>300</option>
+                            <option>400</option>
+                        </select>                
+                </div>
+                <div class="nn">
+                    <label>Department</label>
+                    <input type="text" id="department" required>                
+                </div>
+                <div class="nnn">
+                    <label>Gender</label>
+                    <div class="bb">
+                        <div class="bbb">
+                            <input type="radio" name="gender" id="male">
+                            <label for="male">Male</label> 
+                        </div>
+                        <div class="bbb">
+                            <input type="radio" name="gender" id="female">
+                            <label for="female">female</label> 
+                        </div>
+
+                    </div>
+                </div>
+                <div class="nn">
+                    <label>Phone Number</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="nn">
+                    <label>Question 2: When did it start?</label>
+                    <input type="date" id="q2" required>
+                </div>
+                <div class="nn">
+                    <label>Question 3: Is it urgent? *</label>
+                    <select id="q3">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </div>
+                <div class="nn">
+                    <label>Question 4: Informed adviser? *</label>
+                    <select id="q4">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select> 
+                </div>
+                <div class="nn">
+                    <label>Question 5: Additional comments</label>
+                    <textarea id="q5"></textarea>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="clean-btn" onclick="clearForm()">Clean</button>
+                    <button type="submit" class="submit-btn">Submit</button>
+                </div>    
+            </form>
+            <div class="success" id="successMsg">
+                ✔ Submission Successful!
+            </div>
+        </div>
+    </div>
+
+<script type="module" src="./main.js"></script>
+</body>
+</html>
