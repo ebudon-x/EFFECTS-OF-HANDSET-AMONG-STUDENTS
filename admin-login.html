@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login</title>
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyCgiAUj5673_rqvbLRIvvk9dTb5pZBcbdw",
+        authDomain: "effects-of-handset.firebaseapp.com",
+        projectId: "effects-of-handset",
+        storageBucket: "effects-of-handset.firebasestorage.app",
+        messagingSenderId: "248166796655",
+        appId: "1:248166796655:web:4159b576fa03d4262c6c9a"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    window.login = () => {
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        signInWithEmailAndPassword(auth, email, password)
+        .then(() => { window.location = "admin.html"; })
+        .catch(() => { alert("Access Denied"); });
+    };
+</script>
+<style>
+    body{
+        background-image: url('./image/EltonCris_form_files_keyboard-498396_12801.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;       /* EXACT viewport height */
+        margin: 0;
+        overflow: hidden;    /* Removes scroll */
+    }
+    .box{
+        width:90%;
+        max-width:650px;
+        padding:30px;
+        text-align:right;
+        border-radius:12px;
+    }
+    h2{
+        text-align:left;
+        color:white;
+        padding-bottom:10px;
+        margin-bottom:15px;
+        border-bottom:0.5px solid rgb(243,242,242);
+    }
+    .nn{
+        display:flex;
+        justify-content:space-between;
+        margin-top:15px;
+    }
+    label{
+        color:white;
+        font-size:14px;
+    }
+    input{
+        width:65%;
+        padding:10px;
+        margin-top:5px;
+        border-radius:8px;
+        border:1px solid #ccc;
+    }
+    button{
+        padding:10px;
+        background:black;
+        color:white;
+        border:none;
+        margin-top:20px;
+    }
+    @media only screen and (min-width: 600px) and (max-width: 1900px) {
+        body {
+            padding: 10px;
+        }
+
+        .box {
+            width: 95%;
+            padding: 15px;
+        }
+        
+        h2 {
+            font-size: 20px;
+        }
+
+        input {
+            width: 65%;
+            font-size: 14px;
+        }
+        label{
+            font-size:14px;
+            text-align: left;
+        } 
+        button {
+            font-size: 14px;
+            padding: 10px;
+        }
+
+        .nn {
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+        }    
+    }
+    /* ====== Mobile Phones (≤800px) ====== */
+    @media only screen and (min-width: 300px) and (max-width: 800px) {
+        body {
+            padding: 10px;
+        }
+
+        .box {
+            width: 95%;
+            padding: 15px;
+        }
+        
+        h2 {
+            font-size: 20px;
+        }
+
+        input {
+            width: 65%;
+            font-size: 14px;
+        }
+        label{
+            font-size:14px;
+            text-align: left;
+        } 
+        button {
+            font-size: 14px;
+            padding: 10px;
+        }
+
+        .nn {
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+        }    
+    }
+</style>
+</head>
+<body>
+    <div class="box">
+        <h2>Admin Login</h2>
+        <div class="nn">
+            <label>Admin Email</label>
+            <input type="email" id="email">
+        </div>
+        <div class="nn">
+            <label>Password</label>
+            <input type="password" id="password">
+        </div>
+        <button onclick="login()">Login</button>
+    </div>
+</body>
+</html>

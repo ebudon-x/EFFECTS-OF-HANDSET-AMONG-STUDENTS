@@ -1,0 +1,155 @@
+/* === INDEX CSS === */
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
+.topbar{
+  display: flex;
+  flex-wrap: flex;
+  gap: 30px;
+  width: 100%;
+  background-color: orange;
+  padding: 13px;
+  justify-content: center;
+  border-bottom: 1px solid rgba(180, 180, 178, 0.1);
+}
+a{
+  text-decoration: none;
+  color: white;
+  font-size: 2px 0px;
+  font-weight: bold;
+}
+.body{
+  background-image: url('./image/EltonCris_form_files_keyboard-498396_12801.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.hh{
+  text-align: left;
+  justify-content: left;
+  margin-bottom:20px;
+  color: white;
+  padding: 15px;
+  border-bottom: solid 0.5px rgb(243, 242, 242);
+}
+.hh h2{
+  margin-bottom: 5px;
+}
+.container{
+  width:95%;
+  max-width:650px;
+  padding:30px;
+  border-radius:12px;
+}
+label{
+  margin-top:25px;
+  color: white;
+  font-size: 14px;
+  position: relative;
+  bottom: 10px;
+}
+.nn{
+  display: flex;
+  justify-content: space-between;
+}
+.nnn{
+  display: flex;
+  gap: 27%;
+}
+.bb{
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  align-items: left;
+}
+.bbb{
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+.bbb{
+  display: flex;
+  gap: 5px;
+  margin-top: 4px;
+}
+input,select,textarea{
+  width:65%;
+  padding:10px;
+  margin-top:5px;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
+textarea{
+  resize:none;
+  height:200px;
+}
+.btn-group{
+  text-align: right;
+  margin-top:20px;
+}
+button{
+  flex:1;
+  padding:12px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+.submit-btn{
+  background:black;
+  color:white;
+  margin-left: 10px;
+}
+.clean-btn{
+  background:#ccc;
+}
+.success{
+  display:none;
+  text-align:center;
+  color:green;
+  margin-top:15px;
+  font-weight:bold;
+}
+
+
+    /* ====== Mobile Phones (≤800px) ====== */
+    @media only screen and (min-width: 300px) and (max-width: 800px) {
+.body{
+  background-image: url("./image/EltonCris_form_files_keyboard-498396_12801.png");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  position: relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+  .container, .box {
+    width: 90%;
+    padding: 20px;
+  }
+
+  input, select, textarea {
+    width: 100%;
+  }
+
+  .nn, .nnn {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn-group {
+    text-align: center;
+  }
+
+  button {
+    width: 100%;
+    margin: 5px 0 0 0;
+  }
+
+  .bb {
+    flex-direction: row;
+    gap: 15px;
+  }
+}
