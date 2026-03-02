@@ -41,10 +41,17 @@ form.addEventListener("submit", async (e) => {
   const q8 = document.getElementById("q8").value;
   const q9 = document.getElementById("q9").value;
 
-  if (!studentID) {
-    alert("Please enter your Student ID");
-    return;
-  }
+ if (!studentID) {
+  alert("Please enter your Student ID");
+  return;
+}
+
+const idPattern = /^\d{4}\/[A-Za-z]{3}\/\d{3}$/;
+
+if (!idPattern.test(studentID)) {
+  alert("Student ID must follow format: 2022/CSC/001");
+  return;
+}
 
   try {
     // Check if Student ID already exists
@@ -94,6 +101,7 @@ function clearForm() {
   form.reset();
 
 }
+
 
 
 
