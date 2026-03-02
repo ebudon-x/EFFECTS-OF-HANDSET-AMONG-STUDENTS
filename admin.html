@@ -73,18 +73,23 @@
   });
 
   function renderAnalytics(data) {
-    let male = 0, female = 0;
-    let levels = {};
-    data.forEach(d => {
-      if(d.gender === "Male") male++;
-      if(d.gender === "Female") female++;
-      levels[d.level] = (levels[d.level] || 0) + 1;
-    });
-    let lvlStr = "";
-    for (let l in levels) lvlStr += `${l}: ${levels[l]}<br>`;
-    analyticsDiv.innerHTML = `<strong>Male:</strong> ${male}<br>
-      <strong>Female:</strong> ${female}<br><br>
-      <strong>Level Distribution</strong><br>${lvlStr}`;
+  let male = 0, female = 0, unspecified = 0;
+  let levels = {};
+  
+  data.forEach(d => {
+    if(d.gender === "Male") male++;
+    else if(d.gender === "Female") female++;
+    else unspecified++;
+    levels[d.level] = (levels[d.level] || 0) + 1;
+  });
+  
+  let lvlStr = "";
+  for (let l in levels) lvlStr += `${l}: ${levels[l]}<br>`;
+  
+  analyticsDiv.innerHTML = `<strong>Male:</strong> ${male}<br>
+    <strong>Female:</strong> ${female}<br>
+    <strong>Unspecified:</strong> ${unspecified}<br><br>
+    <strong>Level Distribution</strong><br>${lvlStr}`;
   }
 
   window.exportCSV = function() {
@@ -144,5 +149,6 @@
 </body>
 
 </html>
+
 
 
