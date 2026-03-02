@@ -29,7 +29,7 @@ form.addEventListener("submit", async (e) => {
   const studentID = document.getElementById("studentID").value.trim();
   const level = document.getElementById("level").value;
   const department = document.getElementById("department").value;
-  const gender = document.querySelector('input[name="gender"]:checked')?.value || "";
+  const gender = document.querySelector('input[name="gender"]:checked').value;
   const phone = document.getElementById("phone").value;
   const q2 = document.getElementById("q2").value;
   const q3 = document.getElementById("q3").value;
@@ -54,7 +54,7 @@ form.addEventListener("submit", async (e) => {
       studentID,
       level,
       department,
-      gender,
+      gender: gender,
       phone,
       q2,
       q3,
@@ -83,4 +83,5 @@ form.addEventListener("submit", async (e) => {
 // Clear button
 function clearForm() {
   form.reset();
+
 }
