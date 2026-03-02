@@ -48,29 +48,29 @@ form.addEventListener("submit", async (e) => {
 
   try {
     // Check if Student ID already exists
-    const checkDoc = await getDoc(doc(db, "studentIDs", studentID));
-    if (checkDoc.exists()) {
-      alert("This Student ID has already submitted.");
-      return;
-    }
+    const existing = await getDoc(doc(db, "notes", studentID));
 
-    // Add note to 'notes' collection
-    await addDoc(collection(db, "notes"), {
-      studentID,
-      level,
-      department,
-      gender: gender,
-      phone,
-      q2,
-      q3,
-      q4,
-      q5,
-      q6,
-      q7,
-      q8,
-      q9,
-      created: serverTimestamp()
-    });
+if (existing.exists()) {
+  alert("This Student ID has already submitted.");
+  return;
+}
+
+await setDoc(doc(db, "notes", studentID), {
+  studentID,
+  level,
+  department,
+  gender,
+  phone,
+  q2,
+  q3,
+  q4,
+  q5,
+  q6,
+  q7,
+  q8,
+  q9,
+  created: serverTimestamp()
+});
 
     // Mark StudentID as used
     await setDoc(doc(db, "studentIDs", studentID), { used: true });
@@ -94,5 +94,6 @@ function clearForm() {
   form.reset();
 
 }
+
 
 
