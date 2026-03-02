@@ -76,8 +76,8 @@
     let male = 0, female = 0;
     let levels = {};
     data.forEach(d => {
-      if(d.gender?.toLowerCase() === "male") male++;
-      if(d.gender?.toLowerCase() === "female") female++;
+      if(d.gender === "Male") male++;
+      if(d.gender === "Female") female++;
       levels[d.level] = (levels[d.level] || 0) + 1;
     });
     let lvlStr = "";
@@ -144,4 +144,5 @@
 </body>
 
 </html>
+
 
