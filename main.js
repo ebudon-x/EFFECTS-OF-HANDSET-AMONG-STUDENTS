@@ -36,6 +36,10 @@ form.addEventListener("submit", async (e) => {
   const q3 = document.getElementById("q3").value;
   const q4 = document.getElementById("q4").value;
   const q5 = document.getElementById("q5").value;
+  const q6 = document.getElementById("q6").value;
+  const q7 = document.getElementById("q7").value;
+  const q8 = document.getElementById("q8").value;
+  const q9 = document.getElementById("q9").value;
 
   if (!studentID) {
     alert("Please enter your Student ID");
@@ -61,6 +65,10 @@ form.addEventListener("submit", async (e) => {
       q3,
       q4,
       q5,
+      q6,
+      q7,
+      q8,
+      q9,
       created: serverTimestamp()
     });
 
@@ -86,4 +94,5 @@ function clearForm() {
   form.reset();
 
 }
+
 
