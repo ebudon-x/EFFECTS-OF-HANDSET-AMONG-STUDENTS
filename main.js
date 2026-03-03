@@ -79,8 +79,6 @@ await setDoc(doc(db, "notes", studentID), {
   created: serverTimestamp()
 });
 
-    // Mark StudentID as used
-    await setDoc(doc(db, "studentIDs", studentID), { used: true });
 
     // Show success message
     successMsg.style.display = "block";
@@ -101,6 +99,7 @@ function clearForm() {
   form.reset();
 
 }
+
 
 
 
