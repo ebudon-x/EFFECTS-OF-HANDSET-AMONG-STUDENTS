@@ -62,8 +62,10 @@ if (existing.exists()) {
   return;
 }
 
-await setDoc(doc(db, "notes", studentID), {
-  studentID,
+const safeID = studentID.replaceAll("/", "_");
+
+await setDoc(doc(db, "notes", safeID), {
+  studentID,   // keep original value inside document
   level,
   department,
   gender,
@@ -78,7 +80,6 @@ await setDoc(doc(db, "notes", studentID), {
   q9,
   created: serverTimestamp()
 });
-
 
     // Show success message
     successMsg.style.display = "block";
@@ -99,6 +100,7 @@ function clearForm() {
   form.reset();
 
 }
+
 
 
 
