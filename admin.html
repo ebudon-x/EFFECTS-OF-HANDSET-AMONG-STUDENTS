@@ -92,18 +92,22 @@
     <strong>Level Distribution</strong><br>${lvlStr}`;
   }
 
-  window.exportCSV = function() {
-    let csv = "StudentID,Level,Department,Gender,Phone,Q2,Q3,Q4,Q5\n";
-    allData.forEach(d => {
-      csv += `${d.studentID},${d.level},${d.department},${d.gender},${d.phone},${d.q2},${d.q3},${d.q4},${d.q5}\n`;
-    });
-    const blob = new Blob([csv], {type:"text/csv"});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "submissions.csv";
-    a.click();
-  };
+window.exportCSV = function() {
+
+  let csv = "StudentID,Level,Department,Gender,Phone,Q2,Q3,Q4,Q5,Q6,Q7,Q8,Q9\n";
+
+  allData.forEach(d => {
+    csv += `"${d.studentID}","${d.level}","${d.department}","${d.gender}","${d.phone}","${d.q2}","${d.q3}","${d.q4}","${d.q5}","${d.q6}","${d.q7}","${d.q8}","${d.q9}"\n`;
+  });
+
+  const blob = new Blob([csv], {type:"text/csv"});
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "submissions.csv";
+  a.click();
+};
 
   window.logout = function() {
     signOut(auth).then(() => { window.location = "admin-login.html"; });
